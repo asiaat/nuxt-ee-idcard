@@ -4,10 +4,12 @@ function login() {
 
     console.log("static/login.js login() method ");
 
+    window.location.href="/";
+
     /*
      * Perform some validation here.
      *      
-    $.post("/login",{username:userid},function(data) {  
+    $.get("/login",{username:userid},function(data) {  
                 
         //console.log("From Authorized API " + data);
         if(data === 'done') {
@@ -17,6 +19,7 @@ function login() {
       
     });
     */
+    
     
    /*
     window.hwcrypto.getCertificate({lang: 'en'}).then(function(certificate) {
