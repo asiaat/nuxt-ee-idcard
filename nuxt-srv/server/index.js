@@ -1,7 +1,14 @@
-const express = require('express')
-const consola = require('consola')
+const express   = require('express')
+const consola   = require('consola')
+const   fs      = require('fs')
+const   https   = require('https')
+const   path    = require('path')
+const   morgan  = require('morgan')
+
+
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
+app.use(morgan('combined'))
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -27,11 +34,15 @@ async function start() {
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
-  // Listen the server
-  app.listen(port, host)
-  consola.ready({
-    message: `Server listening on http://${host}:${port}`,
-    badge: true
+  const httpsOptions = {
+    cert: fs.readFileSync(path.join(__dirname,'ssl','server.crt')),
+    key:  fs.readFileSync(path.join(__dirname,'ssl','server.key')),
+  }
+
+  
+  https.createServer(httpsOptions,app)
+    .listen(port,function() {
+        console.log("Serving t https://localhost:" + port)
   })
 }
 start()
