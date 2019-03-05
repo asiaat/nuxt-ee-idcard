@@ -1,0 +1,3 @@
+# STATIC
+
+bower install hwcrypto
