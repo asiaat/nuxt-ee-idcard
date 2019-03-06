@@ -8,8 +8,8 @@
       <h2 class="subtitle">
         Nuxt.js with id Card
       </h2>
-      <div class="links">
-        <a href="/login"         
+      <div class="button">
+        <a onclick="login();"        
            class="button--green"
         >Login</a>
         <a href="/secret"          
@@ -17,7 +17,11 @@
         >Secret Page</a>
       </div>
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+    <script src="bower_components/hwcrypto/hwcrypto.js"></script>
+    <script src="login.js"></script>
   </section>
+  
 </template>
 
 <script>

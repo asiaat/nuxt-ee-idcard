@@ -18,8 +18,7 @@ function login() {
         }
       
     });
-    */
-    
+    */    
     
    /*
     window.hwcrypto.getCertificate({lang: 'en'}).then(function(certificate) {
