@@ -4,21 +4,19 @@ function login() {
 
     console.log("static/login.js login() method ");
 
-    window.location.href="/";
-
     /*
      * Perform some validation here.
-     *      
-    $.get("/login",{username:userid},function(data) {  
+     */      
+    $.post("/api/login",{username:userid},function(data) {  
                 
-        //console.log("From Authorized API " + data);
+        console.log("From Authorized API " + data);
         if(data === 'done') {
             //const url = "/login/"+data;
             //window.location.href=url;
         }
       
     });
-    */    
+       
     
    /*
     window.hwcrypto.getCertificate({lang: 'en'}).then(function(certificate) {

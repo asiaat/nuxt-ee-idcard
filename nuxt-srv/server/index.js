@@ -4,6 +4,7 @@ const   fs      = require('fs')
 const   https   = require('https')
 const   path    = require('path')
 const   morgan  = require('morgan')
+const   bodyParser = require('body-parser')
 
 
 const { Nuxt, Builder } = require('nuxt')
@@ -31,14 +32,39 @@ async function start() {
     await nuxt.ready()
   }
 
+  // TODO now 
+  
+  app.use(bodyParser.json());
+
+  // Login API for testing now
+  app.post('/api/login', function(req, res){
+
+    if(req.body.username) {
+      res.send( res.json({
+        message: "Login OK! " + req.body.username
+      }));
+    } else {
+      res.send( res.json({
+        message: "ERROR: Can't login "
+      }));
+    }
+  });
+
   // Give nuxt middleware to express
   app.use(nuxt.render)
+  
 
+  /*
   const httpsOptions = {
     cert: fs.readFileSync(path.join(__dirname,'ssl','server.crt')),
     key:  fs.readFileSync(path.join(__dirname,'ssl','server.key')),
-  }
+  }*/
 
+  var httpsOptions = {
+    key  : fs.readFileSync(path.join(__dirname,'ssl','key.pem')),
+    ca   : fs.readFileSync(path.join(__dirname,'ssl','csr.pem')),
+    cert : fs.readFileSync(path.join(__dirname,'ssl','cert.pem'))
+  }  
   
   https.createServer(httpsOptions,app)
     .listen(port,function() {
