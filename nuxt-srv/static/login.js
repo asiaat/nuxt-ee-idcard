@@ -1,7 +1,6 @@
 function login() {
           
     const userid = "123";
-
     console.log("static/login.js login() method ");
 
     /*
@@ -11,8 +10,11 @@ function login() {
                 
         console.log("From Authorized API " + data);
         if(data === 'done') {
+            console.log("Authorization is success! " + data);
             //const url = "/login/"+data;
             //window.location.href=url;
+        } else {
+            console.log("Not authorization  " + data);
         }
       
     });

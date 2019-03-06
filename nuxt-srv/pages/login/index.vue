@@ -1,16 +1,8 @@
 <template>
   <section class="container">
-    <div>     
-      
-      <h2>Login</h2>
-      <button
-        onclick="login();"
-      >Login </button>
-    </div>
+    
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
-    <script src="bower_components/hwcrypto/hwcrypto.js"></script>
-    <script src="login.js">  </script>
+    
   </section>
 
 </template>

@@ -33,27 +33,33 @@ async function start() {
   }
 
   // TODO now 
-  
   app.use(bodyParser.json());
 
   // Login API for testing now
   app.post('/api/login', function(req, res){
 
-    if(req.body.username) {
-      res.send( res.json({
-        message: "Login OK! " + req.body.username
-      }));
+    console.log("/api/login #100")
+    
+    if(!req.body.username) {
+
+      console.log("/api/login #200")
+      res.send("done")
+      //res.json({
+      //  message: "Login OK! " + req.body.username
+      //});
+
     } else {
-      res.send( res.json({
+      res.json({
         message: "ERROR: Can't login "
-      }));
+      });
+      console.log("/api/login #300")
     }
+    
   });
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
   
-
   /*
   const httpsOptions = {
     cert: fs.readFileSync(path.join(__dirname,'ssl','server.crt')),
